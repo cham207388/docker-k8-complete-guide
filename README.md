@@ -68,3 +68,14 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### Override CMD
+```
+docker run -it container-id npm run test
+```
+## attach to the running container that has live updates
+## for this command to also have live updates. In this case, test
+```
+docker exec -it c1e5b82029c5 npm run test
+```
