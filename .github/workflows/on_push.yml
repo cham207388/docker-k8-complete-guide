@@ -1,9 +1,6 @@
 name: 'Build and Run Docker image'
 
 on:
-  push:
-    branches:
-      - 'master'
   pull_request:
     branches:
       - main
@@ -14,14 +11,46 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
+        
+      - name: Login to Docker
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
       
-      - name: Build Docker image
+      - name: Build and Push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfile.dev
+          file: ./Dockerfile
           tags: baicham/docker-react:latest
-          push: false
+          push: true
       
       - name: Run Docker container
         run: docker run -e CI=true baicham/docker-react npm run test
+
+      - name: Generate Dockerrun.aws.json file
+        run: |
+          echo '{
+            "AWSEBDockerrunVersion": "1",
+            "Image": {
+              "Name": "baicham/docker-react:latest",
+              "Update": "true"
+            },
+            "Ports": [
+              {
+                "ContainerPort": "80"
+              }
+            ]
+          }' > Dockerrun.aws.json
+
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v22
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          region: "us-east-2"
+          application_name: "docker"
+          environment_name: "Docker-env"
+          existing_bucket_name: ${{ secrets.ELASTIC_BEAN_STALK_S3 }}
+          version_label: ${{ github.sha }}
