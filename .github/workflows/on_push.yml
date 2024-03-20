@@ -3,7 +3,7 @@ name: 'Build and Run Docker image'
 on:
   push:
     branches:
-      - main
+      - '**'
 #  pull_request:
 #    branches:
 #      - main
@@ -34,28 +34,28 @@ jobs:
 #        run: docker run baicham/docker-react npm run test -- --coverage
 ##        run: docker run -e CI=true baicham/docker-react npm run test -- --coverage
 
-      - name: Generate Dockerrun.aws.json file
-        run: |
-          echo '{
-            "AWSEBDockerrunVersion": "1",
-            "Image": {
-              "Name": "baicham/docker-react:latest",
-              "Update": "true"
-            },
-            "Ports": [
-              {
-                "ContainerPort": "80"
-              }
-            ]
-          }' > Dockerrun.aws.json
+#      - name: Generate Dockerrun.aws.json file
+#        run: |
+#          echo '{
+#            "AWSEBDockerrunVersion": "1",
+#            "Image": {
+#              "Name": "baicham/docker-react:latest",
+#              "Update": "true"
+#            },
+#            "Ports": [
+#              {
+#                "ContainerPort": "80"
+#              }
+#            ]
+#          }' > Dockerrun.aws.json
 
-      - name: Deploy to EB
-        uses: einaregilsson/beanstalk-deploy@v22
-        with:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          region: "us-east-2"
-          application_name: "docker"
-          environment_name: "Docker-env"
-          existing_bucket_name: ${{ secrets.ELASTIC_BEAN_STALK_S3 }}
-          version_label: ${{ github.sha }}
+#      - name: Deploy to EB
+#        uses: einaregilsson/beanstalk-deploy@v22
+#        with:
+#          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#          region: "us-east-2"
+#          application_name: "docker"
+#          environment_name: "Docker-env"
+#          existing_bucket_name: ${{ secrets.ELASTIC_BEAN_STALK_S3 }}
+#          version_label: ${{ github.sha }}
