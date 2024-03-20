@@ -24,4 +24,4 @@ jobs:
           push: false
       
       - name: Run Docker container
-        run: docker run baicham/docker-react npm run test
+        run: docker run -e CI=true baicham/docker-react npm run test
