@@ -36,5 +36,4 @@ jobs:
           environment_name: "Docker-env"
           existing_bucket_name: ${{ secrets.ELASTIC_BEAN_STALK_S3 }}
           version_label: ${{ github.sha }}
-          deployment_package: deploy.zip
-          
+#          file: Dockerrun.aws.json
