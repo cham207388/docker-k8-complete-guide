@@ -9,3 +9,9 @@ docker run -it container-id npm run test
 ```
 docker exec -it container-id npm run test
 ```
+
+    docker run baicham/test npm run test -- --coverage
+    shows test coverage
+
+    docker run -e CI=true baicham/test npm run test
+    runs and exits. Good for CI pipelines
