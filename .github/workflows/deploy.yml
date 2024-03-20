@@ -35,6 +35,6 @@ jobs:
           application_name: "docker"
           environment_name: "Docker-env"
           existing_bucket_name: ${{ secrets.ELASTIC_BEAN_STALK_S3 }}
-          version_label: docker-react/${{ github.sha }}
+          version_label: ${{ github.sha }}
           deployment_package: deploy.zip
           
