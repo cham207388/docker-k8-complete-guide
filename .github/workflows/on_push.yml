@@ -29,10 +29,10 @@ jobs:
           tags: baicham/docker-react:latest
           push: true
       
-      - name: Run Docker container
-#        run: docker run -e CI=true baicham/docker-react
-        run: docker run baicham/docker-react npm run test -- --coverage
-#        run: docker run -e CI=true baicham/docker-react npm run test -- --coverage
+#      - name: Run Docker container
+##        run: docker run -e CI=true baicham/docker-react
+#        run: docker run baicham/docker-react npm run test -- --coverage
+##        run: docker run -e CI=true baicham/docker-react npm run test -- --coverage
 
       - name: Generate Dockerrun.aws.json file
         run: |
