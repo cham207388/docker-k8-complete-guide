@@ -26,7 +26,7 @@ jobs:
       - name: Create new ElasticBeanstalk Application Version
         run: |
           aws elasticbeanstalk create-application-version \
-          --application-name MyAwesomeApp \
+          --application-name docker \
           --source-bundle S3Bucket="my-awesome-app-deploy-alhagie-123",S3Key="deploy_package.zip" \
           --version-label "ver-${{ github.sha }}" \
           --description "commit-sha-${{ github.sha }}"
