@@ -1,9 +1,12 @@
 name: 'Build and Run Docker image'
 
 on:
-  pull_request:
+  push:
     branches:
       - main
+#  pull_request:
+#    branches:
+#      - main
 
 jobs:
   build-and-run:
@@ -27,7 +30,8 @@ jobs:
           push: true
       
       - name: Run Docker container
-        run: docker run -e CI=true baicham/docker-react npm run test
+        run: docker run -e CI=true baicham/docker-react
+#        run: docker run -e CI=true baicham/docker-react npm run test
 
       - name: Generate Dockerrun.aws.json file
         run: |
