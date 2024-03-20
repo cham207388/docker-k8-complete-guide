@@ -15,3 +15,6 @@ docker exec -it container-id npm run test
 
     docker run -e CI=true baicham/test npm run test
     runs and exits. Good for CI pipelines
+
+## Elastic Beanstalk
+Works well when running one container at a time
