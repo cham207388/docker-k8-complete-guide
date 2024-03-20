@@ -1,12 +1,6 @@
 name: 'Build and Run Docker image'
 
-on:
-  push:
-    branches:
-      - 'master'
-  pull_request:
-    branches:
-      - main
+on: workflow_dispatch
 
 jobs:
   build-and-run:
@@ -19,7 +13,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfile.dev
+          file: ./Dockerfile
           tags: baicham/docker-react:latest
           push: false
       
