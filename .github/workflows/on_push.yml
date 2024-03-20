@@ -13,7 +13,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfile.dev
+          file: ./Dockerfile
           tags: baicham/docker-react:latest
           push: false
       
