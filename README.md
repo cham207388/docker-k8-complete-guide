@@ -18,3 +18,19 @@ docker exec -it container-id npm run test
 
 ## Elastic Beanstalk
 Works well when running one container at a time
+
+
+### EB cli
+aws configure --profile gha-course
+access_key
+secret_key
+
+## execute
+
+1. Execute ```eb init --profile gha-course``` \
+follow the prompts and complete, this will create a .elasticbeanstalk folder with config file
+2. Create a Procfile with the following info \
+   web: npm run start -- -p $PORT
+3. For this project, the .next folder contains build files \
+    so make sure to add a .ebignore file to override the .ignore file from eb perspective
+
