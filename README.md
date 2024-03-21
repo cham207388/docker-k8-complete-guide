@@ -16,6 +16,11 @@ docker exec -it container-id npm run test
     docker run -e CI=true baicham/test npm run test
     runs and exits. Good for CI pipelines
 
+### External services
+- Flagsmith: https://app.flagsmith.com/
+- codecov: 
+
+
 ## Elastic Beanstalk
 Works well when running one container at a time
 
@@ -35,6 +40,10 @@ follow the prompts and complete, this will create a .elasticbeanstalk folder wit
     so make sure to add a .ebignore file to override the .ignore file from eb perspective
 4. create environment \
        ```eb cleate env-name --instance-types t3.large,t3.medium```
-5. save keys and other env variables in eb
+5. save keys and other env variables in eb \
+    logs in eb-notes.md file
+
+#### Repository Protection
+.github/CODEOWNERS
 
 
