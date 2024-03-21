@@ -43,6 +43,25 @@ follow the prompts and complete, this will create a .elasticbeanstalk folder wit
 5. save keys and other env variables in eb \
     logs in eb-notes.md file
 
+### some eb commands
+```
+aws elasticbeanstalk describe-environments \
+--profile gha-course \
+--application-name gh-action-course-demo \
+--environment-names gha-course-staging
+```
+
+#### to get the latest environment name as text
+```
+aws elasticbeanstalk describe-environments \
+--profile gha-course \
+--application-name gh-action-course-demo \
+--environment-names gha-course-staging \
+--query "Environments[0].EnvironmentName" \
+--output text
+```
+
+
 #### Repository Protection
 .github/CODEOWNERS
 

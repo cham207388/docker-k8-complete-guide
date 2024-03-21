@@ -94,7 +94,6 @@ jobs:
                 }
               ]
             }
-          payload-file-path: "./.github/utils/test-failure-payload-slack.json"
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
   
