@@ -38,8 +38,8 @@ jobs:
     steps:
       - name: test echo
         run: |
-          echo "${{ inputs.aws-env }}"
-          echo "${{ inputs.github-env }}"
+          echo " aws env ${{ inputs.aws-env }}"
+          echo " github env ${{ inputs.github-env }}"
       - name: Avoid deploying to production using a non production env
         if: inputs.aws-env == vars.AWS_EB_PRODUCTION_ENV && inputs.github-env != 'production'
         # display an error message
