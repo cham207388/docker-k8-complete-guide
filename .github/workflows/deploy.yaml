@@ -36,20 +36,24 @@ jobs:
       name: ${{ inputs.github-env }}
       url: "http://${{ steps.get-env-cname.outputs.aws_env_cname }}"
     steps:
+      - name: test echo
+        run: |
+          echo "${{ inputs.aws-env }}"
+          echo "${{ inputs.github-env }}"
       - name: Avoid deploying to production using a non production env
         if: inputs.aws-env == vars.AWS_EB_PRODUCTION_ENV && inputs.github-env != 'production'
         # display an error message
         run: |
           echo "::error::Cannot deploy to production using a non production environment"
           exit 1
-          
+      
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
           aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           aws-region: ${{ vars.AWS_REGION }}
-          
+      
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Node Environment
@@ -57,10 +61,10 @@ jobs:
         with:
           node-version: 20
           cache: "npm"
-          
+      
       - name: Install Dependencies
         run: npm ci
-        
+      
       - name: Build App
         run: npm run build
         env:
@@ -71,26 +75,26 @@ jobs:
         with:
           path: ~/.cache/pip
           key: ${{runner.os}}-pip
-          
+      
       - name: Install EB CLI
         id: install-eb-cli
         run: pip install awsebcli
-        
+      
       - name: Get AWS ENV Name
         id: get-env-name
-        run: echo "aws_env=$(aws elasticbeanstalk describe-environments --application-name ${{vars.AWS_EB_APP_NAME}} --environment-names ${{ inputs.aws-env}} --query "Environments[0].EnvironmentName" --output text)" >> $GITHUB_OUTPUT
+        run: echo "aws_env=$(aws elasticbeanstalk describe-environments --application-name ${{ vars.AWS_EB_APP_NAME }} --environment-names ${{ inputs.aws-env }} --query "Environments[0].EnvironmentName" --output text)" >> $GITHUB_OUTPUT
       
       - name: Get AWS ENV Status
         id: get-env-status
-        run: echo "aws_env_status=$(aws elasticbeanstalk describe-environments --application-name ${{vars.AWS_EB_APP_NAME}} --environment-names ${{ inputs.aws-env}} --query "Environments[0].Status" --output text)" >> $GITHUB_OUTPUT
+        run: echo "aws_env_status=$(aws elasticbeanstalk describe-environments --application-name ${{ vars.AWS_EB_APP_NAME }} --environment-names ${{ inputs.aws-env }} --query "Environments[0].Status" --output text)" >> $GITHUB_OUTPUT
       
       #
       - name: Initialize EB
-        run: eb init ${{vars.AWS_EB_APP_NAME}} --platform "${{vars.AWS_EB_PLATFORM}}" --region ${{vars.AWS_REGION}}
+        run: eb init ${{vars.AWS_EB_APP_NAME}} --platform "${{vars.AWS_EB_PLATFORM}}" --region ${{ vars.AWS_REGION }}
       
       - name: Create a New Environment
         if: steps.get-env-name.outputs.aws_env == 'None' || steps.get-env-status.outputs.aws_env_status == 'Terminated'
-        run: eb create ${{ inputs.aws-env }} --instance-types ${{vars.AWS_EB_ENV_INSTANCE_TYPES}} --cname ${{ inputs.aws-env }} --envvars FLAGSMITH_KEY=${{ secrets.FLAGSMITH_KEY }}
+        run: eb create ${{ inputs.aws-env }} --instance-types ${{ vars.AWS_EB_ENV_INSTANCE_TYPES }} --cname ${{ inputs.aws-env }} --envvars FLAGSMITH_KEY=${{ secrets.FLAGSMITH_KEY }}
       
       - name: Deploy if Environment Exists
         if: steps.get-env-name.outputs.aws_env == inputs.aws-env && steps.get-env-status.outputs.aws_env_status != 'Terminated'
@@ -98,7 +102,7 @@ jobs:
       
       - name: Get AWS ENV CNAME
         id: get-env-cname
-        run: echo "aws_env_cname=$(aws elasticbeanstalk describe-environments --application-name ${{vars.AWS_EB_APP_NAME}} --environment-names ${{ inputs.aws-env}} --query "Environments[0].CNAME" --output text)" >> $GITHUB_OUTPUT
+        run: echo "aws_env_cname=$(aws elasticbeanstalk describe-environments --application-name ${{ vars.AWS_EB_APP_NAME }} --environment-names ${{ inputs.aws-env }} --query "Environments[0].CNAME" --output text)" >> $GITHUB_OUTPUT
       
       - name: Notify on Slack
         uses: slackapi/slack-github-action@v1.25.0
