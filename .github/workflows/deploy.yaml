@@ -90,7 +90,7 @@ jobs:
       
       #
       - name: Initialize EB
-        run: eb init ${{vars.AWS_EB_APP_NAME}} --platform "Node.js 20 running on 64bit Amazon Linuz 2023" --region ${{ vars.AWS_REGION }}
+        run: eb init ${{vars.AWS_EB_APP_NAME}} --platform "Node.js 20 running on 64bit Amazon Linux 2023" --region ${{ vars.AWS_REGION }}
       
       - name: Create a New Environment
         if: steps.get-env-name.outputs.aws_env == 'None' || steps.get-env-status.outputs.aws_env_status == 'Terminated'
