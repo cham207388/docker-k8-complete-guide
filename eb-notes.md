@@ -1,4 +1,5 @@
 ### Logs after execution of create env
+```eb create gha-course-staging --instance-types t3.large,t3.medium```
 Creating application version archive "app-0e345-240321_104200117679".
 Uploading: [##################################################] 100% Done...
 - Environment details for: gha-course-env \
