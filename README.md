@@ -47,3 +47,5 @@ follow the prompts and complete, this will create a .elasticbeanstalk folder wit
 .github/CODEOWNERS
 
 
+### setup code ql
+- settings, Code Security and analysis, Code Scanning
