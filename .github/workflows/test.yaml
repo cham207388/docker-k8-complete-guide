@@ -29,6 +29,8 @@ jobs:
         
       - name: Build project
         run: npm run build
+        env:
+          FLAGSMITH: ${{ secrets.FLAGSMITH }}
         
       - uses: actions/upload-artifact@v4
         with:
@@ -63,6 +65,7 @@ jobs:
           
       - name: Send custom JSON data to Slack workflow
         uses: slackapi/slack-github-action@v1.25.0
+        if: failure()
         with:
           payload-file-path: "./.github/utils/test-failure-payload-slack.json"
         env:
