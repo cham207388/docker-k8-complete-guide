@@ -33,4 +33,8 @@ follow the prompts and complete, this will create a .elasticbeanstalk folder wit
    web: npm run start -- -p $PORT
 3. For this project, the .next folder contains build files \
     so make sure to add a .ebignore file to override the .ignore file from eb perspective
+4. create environment \
+       ```eb cleate env-name --instance-types t3.large,t3.medium```
+5. save keys and other env variables in eb
+
 
