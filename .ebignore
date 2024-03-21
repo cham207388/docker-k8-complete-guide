@@ -7,13 +7,14 @@
 
 # testing
 /coverage
-
-/.next
+/test-utils
+/playwright-report
 
 # production
 /build
 
 # misc
+.pem
 .DS_Store
 .env.local
 .env.development.local
