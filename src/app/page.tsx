@@ -1,11 +1,11 @@
 import Link from "next/link";
-import flagsmith from "@/utils/flagsmith";
+// import flagsmith from "@/utils/flagsmith";
 
 export const revalidate = 0;
 
 export default async function Home() {
 
-	const flags = await flagsmith.getEnvironmentFlags()
+	const flags = false; //await flagsmith.getEnvironmentFlags() .isFeatureEnabled("search")
 	return (
 		<main className="main">
 			<div>
@@ -13,7 +13,7 @@ export default async function Home() {
 			</div>
 			<Link href="/about">About</Link>
 			<br/>
-			{flags.isFeatureEnabled("search")
+			{flags
 				&& <input placeholder="Search"/>}
 		</main>
 	);
