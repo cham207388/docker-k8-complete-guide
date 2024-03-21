@@ -30,7 +30,7 @@ jobs:
       - name: Build project
         run: npm run build
         env:
-          FLAGSMITH: ${{ secrets.FLAGSMITH }}
+          FLAGSMITH_KEY: ${{ secrets.FLAGSMITH_KEY }}
         
       - uses: actions/upload-artifact@v4
         with:
