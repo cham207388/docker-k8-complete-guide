@@ -1,10 +1,11 @@
 name: "Test"
 on:
   workflow_call:
-  
+
 jobs:
   test-and-build:
     runs-on: ubuntu-latest
+    environment: staging
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
