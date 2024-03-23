@@ -32,3 +32,11 @@ Works well when running one container at a time
     
 ### nginx images
 - default.conf helps with routing
+
+## .travis.yaml at 
+    https://raw.githubusercontent.com/StephenGrider/multi-docker/master/.travis.yml
+    I'll be using Github Actions instead
+
+### multi-deploy.yaml
+1. I need to create an application and environment
+    multi-gh, multi-gh-env
