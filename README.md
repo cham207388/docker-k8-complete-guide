@@ -21,3 +21,8 @@ Works well when running one container at a time
 
 
 ### Multiple containers 
+
+## volumes in docker compose
+    volumes:
+      - /app/node_modules # don't override
+      - ./server:/app # point to the server folder
