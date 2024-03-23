@@ -26,3 +26,9 @@ Works well when running one container at a time
     volumes:
       - /app/node_modules # don't override
       - ./server:/app # point to the server folder
+
+### Changes
+    change ports listening on 5000 to 5001
+    
+### nginx images
+- default.conf helps with routing
