@@ -18,3 +18,6 @@ docker exec -it container-id npm run test
 
 ## Elastic Beanstalk
 Works well when running one container at a time
+
+
+### Multiple containers 
