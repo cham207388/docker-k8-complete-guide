@@ -10,3 +10,8 @@ services:
     build:
       dockerfile: Dockerfile.dev
       context: ./server
+    volumes:
+      # inside the /app dir of the running container, except for the node_modules
+      # dir, point to the user's ./server dir
+      - /app/node_modules
+      - ./server:/app
