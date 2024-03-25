@@ -1,8 +1,5 @@
 name: Deploy MultiDocker
-on:
-  push:
-    branches:
-      - multi-k8
+on: workflow_dispatch
  
 jobs:
   build:
