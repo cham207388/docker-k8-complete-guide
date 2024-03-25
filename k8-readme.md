@@ -30,3 +30,6 @@ A system that deploy containerized applications
     Do exactly these steps to arrive at this container setup
     - Declarative
     Our container setup should look like this, make it happen
+
+    We are going to use Declarative style
+        - update a configuration file leaving the name intact
