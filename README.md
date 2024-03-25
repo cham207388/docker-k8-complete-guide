@@ -42,8 +42,10 @@ Works well when running one container at a time
     multi-gh, multi-gh-env
 
     In service object
-    ports section
-    NodePort type
-    - port needed by other pods to connect to the container running inside this pod
-    - targetPort: application running inside the container's port
-    - nodePort: the one we care about the most (3000- - 32767)
+    NodePort type:
+      - ports
+        - port needed by other pods to connect to the container running inside this pod
+        - targetPort: application running inside the container's port
+        - nodePort: the one we care about the most (30000 - 32767) 31515
+        access localhost:31515 if using docker deskstop k83
+        access minikube-ip:31515 if using minikube k83
