@@ -13,7 +13,7 @@ A system that deploy containerized applications
     Responsible for networking
 - ReplicaSets
 
-#### In service object
+### In service object
     NodePort type:
       - ports
         - port needed by other pods to connect to the container running inside this pod
@@ -24,3 +24,9 @@ A system that deploy containerized applications
     ClusterIP
     Ingress
     LoadBalance
+
+### Deployments
+    - Imperative
+    Do exactly these steps to arrive at this container setup
+    - Declarative
+    Our container setup should look like this, make it happen
