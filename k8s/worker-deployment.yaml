@@ -13,5 +13,5 @@ spec:
         component: worker
     spec:
       containers:
-      - name: worker
-        image: baicham/multi-worker
+        - name: worker
+          image: baicham/multi-worker
