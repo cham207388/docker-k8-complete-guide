@@ -54,4 +54,5 @@ use an imperative command to update deployment
 If minikube, configuring your local docker to point to the vm docker
 
 ```eval $(minikube docker-env)```
-    
+
+Increasing the number of replicas in databases should be thought about really well.
