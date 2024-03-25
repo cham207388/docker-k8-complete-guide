@@ -2,7 +2,7 @@ name: Deploy MultiDocker
 on:
   push:
     branches:
-      - multi 
+      - multi-k8
  
 jobs:
   build:
