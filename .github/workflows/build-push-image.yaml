@@ -1,11 +1,10 @@
 name: Build and Push
 on:
   push:
-    branches:
-      - '*'
+    branches: '**'
  
 jobs:
-  build:
+  build-and-push:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
