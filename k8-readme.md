@@ -47,8 +47,11 @@ A system that deploy containerized applications
     - 
 [challenging to convince deployment to recreate pods with updated image in conf](https://github.com/kubernetes/kubernetes/issues/33664)
 
-    use an imperative command to update deployment
-```
-kubectl set image object-type / object-name container-name = new-image-to-use
-```
+use an imperative command to update deployment
+
+```kubectl set image object-type / object-name container-name = new-image-to-use```
+
+If minikube, configuring your local docker to point to the vm docker
+
+```eval $(minikube docker-env)```
     
