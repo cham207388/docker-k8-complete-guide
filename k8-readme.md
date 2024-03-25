@@ -1,4 +1,4 @@
-## Kubernetes
+# Kubernetes
 A system that deploy containerized applications
 
 - Master
@@ -13,7 +13,8 @@ A system that deploy containerized applications
     Responsible for networking
 - ReplicaSets
 
-### In service object
+## Service
+In service object
     NodePort type:
       - ports
         - port needed by other pods to connect to the container running inside this pod
@@ -26,6 +27,8 @@ A system that deploy containerized applications
     LoadBalance
 
 ### Deployments
+    Maintains a set of identical pods, ensuring that they have the correct configuration and that the right number exist
+
     - Imperative
     Do exactly these steps to arrive at this container setup
     - Declarative
