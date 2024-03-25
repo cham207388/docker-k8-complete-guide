@@ -26,9 +26,9 @@ In service object
     Ingress
     LoadBalance
 
-### Deployments
+## Deployments
     Maintains a set of identical pods, ensuring that they have the correct configuration and that the right number exist
-
+    - good all environments
     - Imperative
     Do exactly these steps to arrive at this container setup
     - Declarative
