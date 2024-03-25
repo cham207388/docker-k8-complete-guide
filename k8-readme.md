@@ -14,17 +14,24 @@ A system that deploy containerized applications
 - ReplicaSets
 
 ## Service
-In service object
-    NodePort type:
-      - ports
-        - port needed by other pods to connect to the container running inside this pod
-        - targetPort: application running inside the container's port
-        - nodePort: the one we care about the most (30000 - 32767) 31515
-        access localhost:31515 if using docker deskstop k83
-        access minikube-ip:31515 if using minikube k83
-    ClusterIP
-    Ingress
-    LoadBalance
+    Services are like elastic ip in EC2 world
+    
+    Each pod is assigned a unique ip address.
+    When a pod is destroyed and a new pod is created,
+    the newly created pod might have a different IP address
+    A service will handle directing traffic to the available pods.
+
+    In service object
+        1. NodePort type:
+            - ports
+                - port needed by other pods to connect to the container running inside this pod
+                - targetPort: application running inside the container's port
+                - nodePort: the one we care about the most (30000 - 32767) 31515
+                access localhost:31515 if using docker deskstop k83
+                access minikube-ip:31515 if using minikube k8
+        2. ClusterIP
+        3. Ingress
+        4. LoadBalance
 
 ## Deployments
     Maintains a set of identical pods, ensuring that they have the correct configuration and that the right number exist
