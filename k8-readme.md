@@ -43,3 +43,9 @@ A system that deploy containerized applications
 
     We are going to use Declarative style
         - update a configuration file leaving the name intact
+    # Getting our deployment to update or recreate the pods with the updated image in configuration
+    - 
+[challenging to convince deployment to recreate pods with updated image in conf](https://github.com/kubernetes/kubernetes/issues/33664)
+
+    use an imperative command to update deployment
+    
