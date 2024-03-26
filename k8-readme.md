@@ -56,3 +56,11 @@ If minikube, configuring your local docker to point to the vm docker
 ```eval $(minikube docker-env)```
 
 Increasing the number of replicas in databases should be thought about really well.
+
+## Volume
+
+An object that allows a container to store data at the pod level. \
+Lives as long as the Pod lives.
+Not exactly the same meaning as in the world of docker
+
+What we need is something that lives beyond the lifespan of the Pod
