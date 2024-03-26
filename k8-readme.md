@@ -38,7 +38,10 @@ A system that deploy containerized applications
             Exposes a set of services to the outside world
             Many ways to implement an ingress
             - we will 
-            - we will use from **github.com/kubernetes/ingress-nginx**
+            - we will use from 
+                github.com/kubernetes/ingress-nginx
+                https://kubernetes.github.io/ingress-nginx/deploy/#quick-start
+            ```kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.0/deploy/static/provider/cloud/deploy.yaml```
             --- not the one from: github.com/nginxinc/kubernetes-ingress
         4. LoadBalancer
             Legacy way of getting network traffic intoa cluster
