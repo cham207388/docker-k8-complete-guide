@@ -13,7 +13,20 @@ spec:
         component: server
     spec:
       containers:
-      - name: server
-        image: baicham/multi-server
-        ports:
-        - containerPort: 5000
+        - name: server
+          image: baicham/multi-server
+          ports:
+            - containerPort: 5000
+          env:
+            - name: REDIS_HOST
+              value: redis-cluster-ip-service
+            - name: REDIS_PORT
+              value: '6379'
+            - name: PGUSER
+              value: postres
+            - name: PGHOST
+              value: postres-cluster-ip-service
+            - name: PGPORT
+              value: 5432
+            - name: PGDATABASE
+              value: postgres
