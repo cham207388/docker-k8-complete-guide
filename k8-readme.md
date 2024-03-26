@@ -70,3 +70,8 @@ What we need is something that lives beyond the lifespan of the Pod
 | ReadWriteOnce   | Can be used by a single node     |
 | ReadOnlyMany     | Multiple nodes can read from this       |
 | ReadWriteMany     | Can be read and written to by many nodes       |
+
+## Secret
+
+Use Imperative command to create a secret \
+```kubectl create secret generic pg_password --from-literal key=value```
