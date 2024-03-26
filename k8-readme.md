@@ -1,4 +1,5 @@
 # Kubernetes
+
 A system that deploy containerized applications
 
 - Master
@@ -14,7 +15,8 @@ A system that deploy containerized applications
 - ReplicaSets
 
 ## Service
-    Services are like elastic ip in EC2 world
+
+    Services sets up networking in a k8 cluster
     
     Each pod is assigned a unique ip address.
     When a pod is destroyed and a new pod is created,
@@ -23,6 +25,7 @@ A system that deploy containerized applications
 
     In service object
         1. NodePort type:
+            Exposes a set of pods to the oude world. Only good for dev
             - ports
                 - port needed by other pods to connect to the container running inside this pod
                 - targetPort: application running inside the container's port
@@ -30,10 +33,19 @@ A system that deploy containerized applications
                 access localhost:31515 if using docker deskstop k83
                 access minikube-ip:31515 if using minikube k8
         2. ClusterIP
+            Exposes a set of pods to other objects in the cluster
         3. Ingress
-        4. LoadBalance
+            Exposes a set of services to the outside world
+            Many ways to implement an ingress
+            - we will 
+            - we will use from **github.com/kubernetes/ingress-nginx**
+            --- not the one from: github.com/nginxinc/kubernetes-ingress
+        4. LoadBalancer
+            Legacy way of getting network traffic intoa cluster
+            - provide access to only set of pods in one deployment
 
 ## Deployments
+
     Maintains a set of identical pods, ensuring that they have the correct configuration and that the right number exist
     - good all environments
     - Imperative
