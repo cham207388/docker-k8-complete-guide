@@ -43,6 +43,8 @@ A system that deploy containerized applications
                 https://kubernetes.github.io/ingress-nginx/deploy/#quick-start
             ```kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.0/deploy/static/provider/cloud/deploy.yaml```
             --- not the one from: github.com/nginxinc/kubernetes-ingress
+
+            for minikube, configure ingress by executing the command: minikube addons enable ingress
         4. LoadBalancer
             Legacy way of getting network traffic intoa cluster
             - provide access to only set of pods in one deployment
@@ -89,4 +91,4 @@ What we need is something that lives beyond the lifespan of the Pod
 ## Secret
 
 Use Imperative command to create a secret \
-```kubectl create secret generic pg_password --from-literal key=value```
+```kubectl create secret generic pgpassword --from-literal PGPASSWORD=password```

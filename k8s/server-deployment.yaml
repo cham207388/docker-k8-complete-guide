@@ -25,7 +25,7 @@ spec:
             - name: PGUSER
               value: postres
             - name: PGHOST
-              value: postres-cluster-ip-service
+              value: postgres-cluster-ip-service
             - name: PGPORT
               value: '5432'
             - name: PGDATABASE
