@@ -64,3 +64,9 @@ Lives as long as the Pod lives.
 Not exactly the same meaning as in the world of docker
 
 What we need is something that lives beyond the lifespan of the Pod
+
+| Access Modes |  |
+| :---         |     :---      |
+| ReadWriteOnce   | Can be used by a single node     |
+| ReadOnlyMany     | Multiple nodes can read from this       |
+| ReadWriteMany     | Can be read and written to by many nodes       |
